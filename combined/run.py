@@ -49,11 +49,11 @@ p.resetDebugVisualizerCamera(
     cameraTargetPosition=[0.5, 0.5, 0.6]
 )
 p.setGravity(0,0,-10)
-boxId = p.loadURDF("./robot.urdf.xml", useFixedBase=True)
+boxId = p.loadURDF("C:/Users/skachale/visual_feedback2025/combined/robot.urdf.xml", useFixedBase=True)
 
 # add aruco cube and aruco texture
-c = p.loadURDF('aruco.urdf', (0.5, 0.5, 0.0), useFixedBase=True)
-x = p.loadTexture('aruco_cube.png')
+c = p.loadURDF('C:/Users/skachale/visual_feedback2025/combined/aruco.urdf', (0.5, 0.5, 0.0), useFixedBase=True)
+x = p.loadTexture('C:/Users/skachale/visual_feedback2025/combined/aruco_cube.png')
 p.changeVisualShape(c, -1, textureUniqueId=x)
 
 # go to the desired position
