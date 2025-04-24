@@ -18,7 +18,7 @@ physicsClient = p.connect(p.GUI, options="--background_color_red=1 --background_
 p.resetDebugVisualizerCamera(cameraDistance=0.5, cameraYaw=-90, cameraPitch=-89.999, cameraTargetPosition=[0.5, 0.5, 0.6])
 p.setGravity(0, 0, -10)
 
-boxId = p.loadURDF("./robot.urdf.xml", useFixedBase=True)
+boxId = p.loadURDF("combined/robot.urdf.xml", useFixedBase=True)
 
 jointIndices = []
 for i in range(p.getNumJoints(boxId)):
@@ -28,8 +28,8 @@ for i in range(p.getNumJoints(boxId)):
 
 eefLinkIdx = p.getNumJoints(boxId) - 1
 
-c = p.loadURDF("aruco.urdf", (0.5, 0.5, 0.0), useFixedBase=True)
-x = p.loadTexture("aruco_cube.png")
+c = p.loadURDF("combined/aruco.urdf", (0.5, 0.5, 0.0), useFixedBase=True)
+x = p.loadTexture("combined/aruco_cube.png")
 p.changeVisualShape(c, -1, textureUniqueId=x)
 
 dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
@@ -63,7 +63,7 @@ def move_to_cartesian(xyz, rpy):
         p.stepSimulation()
 
 # Начальное положение над маркером
-move_to_cartesian([0.47, 0.47, 0.3], [0.3, 0.3, 1.66])
+move_to_cartesian([0.47, 0.47, 0.3], [0.0, 0.0, 1.66])
 
 updateCamPos(camera)
 img = camera.get_frame()
@@ -78,7 +78,7 @@ sd0 = np.reshape(np.array(corners[0][0]), (8, 1))
 sd0 = np.array([(s - IMG_HALF) / IMG_HALF for s in sd0])
 
 # Смещенное начальное положение
-move_to_cartesian([0.45, 0.45, 0.3], [0.05, 0, 0.05])
+move_to_cartesian([0.45, 0.45, 0.3], [0.0, 0.0, 0.05])
 
 camCount = 0
 w = np.zeros((3, 1))
